@@ -12,7 +12,9 @@ git clone https://github.com/robi-ng/keyword-finder.git
 ### 2. Prepare files for demo
 Some sample files with keyword TODO are included in this repository for easier demo.
 
-### 3. Run the script
+### 3. Ensure that Node.js is installed on your machine
+
+### 4. Run the script
 ```
 cd keyword-finder
 node keyword-finder.js TODO
