@@ -19,3 +19,11 @@ Some sample files with keyword TODO are included in this repository for easier d
 cd keyword-finder
 node keyword-finder.js TODO
 ```
+### 5. Install mocha dependency
+```
+npm install
+```
+### 6. Run sample tests
+```
+mocha keyword-finder.test.js
+``` 

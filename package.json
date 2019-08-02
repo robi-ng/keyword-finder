@@ -1,0 +1,25 @@
+{
+  "name": "keyword-finder",
+  "version": "1.0.0",
+  "description": "This Node.js script is intended to find list of all files in the current directory that contains a certain keyword. For flexibility, the keyword is accepted as an argument for the script.",
+  "main": "keyword-finder.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robi-ng/keyword-finder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robi-ng/keyword-finder/issues"
+  },
+  "homepage": "https://github.com/robi-ng/keyword-finder#readme",
+  "devDependencies": {
+    "mocha": "^6.2.0"
+  }
+}

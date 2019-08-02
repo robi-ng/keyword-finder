@@ -16,12 +16,7 @@ if (!keyword) {
     return;
 }
 
-var regex = new RegExp(keyword);
-var testRegex = function(line) {
-    return regex.test(line);
-};
-
-var keywordFinder = function(dir, done) {
+function keywordFinder(dir, keyword, done) {
     var results = []; // Array to store each matched file
     fs.readdir(dir, function(err, list) {
         if (err) throw err;
@@ -36,14 +31,17 @@ var keywordFinder = function(dir, done) {
                 fs.stat(file, function(err, target) {
                     if (err) throw err;
                     if (target && target.isDirectory()) { // Call function recursively if it's a directory
-                        keywordFinder(file, function(err, res) {
+                        keywordFinder(file, keyword, function(err, res) {
                             results = results.concat(res);
                             next();
                         });
                     } else { // Read file and check for keyword if it's a file
                         fs.readFile(file, function(err, data) {
                             if (err) throw err;
-                            if (data.toString().split(/\n/).some(testRegex)) {
+                            var regex = new RegExp(keyword, "i");
+                            if (data.toString().split(/\n/).some(function(element) {
+                                return regex.test(element);
+                            })) {
                                 console.log(file); // Print filename immediately once found
                                 results.push(file);
                             }
@@ -56,8 +54,9 @@ var keywordFinder = function(dir, done) {
     })
 }
 
-keywordFinder('./', function(err, results) {
+keywordFinder('./', keyword, function(err, results) {
     if (err) throw err;
     // results variable is an array that contains list of files with matching keyword in the content
     // Print success message if necessary
 }); 
+module.exports = keywordFinder;
